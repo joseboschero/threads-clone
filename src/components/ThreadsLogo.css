@@ -1,0 +1,53 @@
+body{
+    display:grid;
+    background-color: #222;
+    text-align: center;
+    justify-content: center;
+    margin: 60px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.head
+{
+    color: #fff;
+    text-decoration: underline #fe3456;
+}
+
+.threads {
+    width: 48px;
+    fill: none;
+    stroke-width: 30;
+}
+
+.base {
+    stroke: #ffffff33;
+}
+
+.loading {
+    stroke: #fff;
+    stroke-dasharray: 150, 1503;
+    stroke-dashoffset: 150;
+    animation: loading 3s ease-in-out alternate infinite;
+}
+
+@keyframes loading {
+    0% {
+        stroke-dashoffset: 150;
+        stroke-dasharray: 150, 1503;
+    }
+
+    50% {
+        stroke-dashoffset: -1503;
+        stroke-dasharray: 150, 1503;
+    }
+
+    100% {
+        stroke-dashoffset: 150;
+        stroke-dasharray: 1503;
+    }
+}
