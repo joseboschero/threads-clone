@@ -1,10 +1,12 @@
 import "./App.css";
-import ThreadsLogo from "./components/ThreadsLogo";
+import ThreadsLogo from "./components/ThreadsLogo/ThreadsLogo";
+import Login from "./components/Login/Login";
+import React from "react";
 
 function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline text-white">Hello world!</h1>
+      <Login />
     </>
   );
 }
