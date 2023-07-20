@@ -1,4 +1,7 @@
 import React from "react";
+import { Provider } from "react-redux";
+import store, { persistor } from "../src/redux/store";
+import { PersistGate } from "redux-persist/lib/integration/react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
@@ -18,7 +21,11 @@ const Theme = createTheme({
 });
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <ThemeProvider theme={Theme}>
-    <App />
-  </ThemeProvider>
+  <Provider store={store}>
+    <PersistGate persistor={persistor}>
+      <ThemeProvider theme={Theme}>
+        <App />
+      </ThemeProvider>
+    </PersistGate>
+  </Provider>
 );
