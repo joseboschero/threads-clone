@@ -1,27 +1,34 @@
 import React from "react";
-import { TextField } from "@mui/material";
+import { TextField, responsiveFontSizes } from "@mui/material";
 import { Button } from "@mui/material";
 import { color } from "framer-motion";
 import { useState } from "react";
 import axiosInstance from "../../utils/axiosInstance";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setAccessToken } from "../../redux/slices/auth";
 
 function Login() {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState({ message: null, credentials: false });
 
-  const [error, setError] = useState(false);
+  const dispatch = useDispatch();
 
   const onSubmit = async () => {
-    if (!user || !password) {
-      setError(true);
-      return;
+    try {
+      if (!user || !password) {
+        setError({ ...error, credentials: true });
+        return;
+      }
+      const response = await axios.post("http://localhost:3001/login", {
+        username: user,
+        password,
+      });
+      dispatch(setAccessToken(response.data));
+    } catch (error) {
+      setError({ ...error, message: error.response.data.error });
     }
-    const response = await axios.post("http://localhost:3001/login", {
-      user,
-      password,
-    });
-    console.log(response.data);
   };
 
   return (
@@ -39,6 +46,7 @@ function Login() {
               fullWidth
               size="small"
               onChange={(event) => setUser(event.target.value)}
+              error={error.credentials}
             />
           </div>
           <div className="py-1">
@@ -51,12 +59,16 @@ function Login() {
               size="small"
               variant="outlined"
               onChange={(event) => setPassword(event.target.value)}
+              error={error.credentials}
             />
           </div>
           <div className="flex justify-center py-1">
             <Button variant="outlined" onClick={onSubmit}>
               Login
             </Button>
+          </div>
+          <div>
+            <span>{error.message}</span>
           </div>
         </div>
       </div>
