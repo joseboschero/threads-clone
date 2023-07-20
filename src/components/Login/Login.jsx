@@ -29,7 +29,7 @@ function Login() {
       <div className="w-full h-3/4 flex justify-center">
         <img src="LoginImg.png" alt="Login-Image" className="w-auto h-full" />
       </div>
-      <div className="max-w-sm h-1/4 p-6">
+      <div className="h-1/4 p-6">
         <div className="p-2 rounded-md border-[1px] border-[#454545]">
           <div className="py-1">
             <TextField
