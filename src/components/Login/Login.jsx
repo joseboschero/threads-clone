@@ -2,8 +2,28 @@ import React from "react";
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import { color } from "framer-motion";
+import { useState } from "react";
+import axiosInstance from "../../utils/axiosInstance";
+import axios from "axios";
 
 function Login() {
+  const [user, setUser] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [error, setError] = useState(false);
+
+  const onSubmit = async () => {
+    if (!user || !password) {
+      setError(true);
+      return;
+    }
+    const response = await axios.post("http://localhost:3001/login", {
+      user,
+      password,
+    });
+    console.log(response.data);
+  };
+
   return (
     <>
       <div className="w-full h-3/4 flex justify-center">
@@ -18,6 +38,7 @@ function Login() {
               variant="outlined"
               fullWidth
               size="small"
+              onChange={(event) => setUser(event.target.value)}
             />
           </div>
           <div className="py-1">
@@ -29,10 +50,13 @@ function Login() {
               fullWidth
               size="small"
               variant="outlined"
+              onChange={(event) => setPassword(event.target.value)}
             />
           </div>
           <div className="flex justify-center py-1">
-            <Button variant="outlined">Login</Button>
+            <Button variant="outlined" onClick={onSubmit}>
+              Login
+            </Button>
           </div>
         </div>
       </div>

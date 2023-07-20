@@ -6,7 +6,6 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { createTheme, ThemeProvider, withTheme } from "@mui/material/styles";
-import { Provider } from "react-redux";
 
 const Theme = createTheme({
   palette: {
