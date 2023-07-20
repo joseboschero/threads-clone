@@ -18,6 +18,7 @@ import { Alert } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
+import { Link } from "react-router-dom";
 
 function Login() {
   const Alert = React.forwardRef(function Alert(props, ref) {
@@ -90,10 +91,14 @@ function Login() {
               variant="outlined"
               onChange={(event) => setPassword(event.target.value)}
             >
-              <InputLabel htmlFor="outlined-adornment-password">
+              <InputLabel
+                htmlFor="outlined-adornment-password"
+                error={error.credentials}
+              >
                 Password
               </InputLabel>
               <OutlinedInput
+                error={error.credentials}
                 id="outlined-adornment-password"
                 type={showPassword ? "text" : "password"}
                 endAdornment={
@@ -112,7 +117,7 @@ function Login() {
               />
             </FormControl>
           </div>
-          <div className="flex justify-center py-1 mb-1">
+          <div className="flex justify-center py-1">
             <Button variant="outlined" onClick={onSubmit} fullWidth>
               Login
             </Button>
@@ -151,10 +156,12 @@ function Login() {
           <div className="flex justify-center">
             <span className="text-white">or</span>
           </div>
-          <div className="flex justify-center pt-1">
-            <Button variant="outlined" onClick={onSubmit} fullWidth>
-              Sign Up
-            </Button>
+          <div className="flex justify-center">
+            <Link to="/register">
+              <Button variant="outlined" fullWidth>
+                Sign Up
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
