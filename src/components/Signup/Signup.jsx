@@ -20,8 +20,9 @@ import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import ThreadsLogo from "../ThreadsLogo/ThreadsLogo";
 
-function Login() {
+function Signup() {
   const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
   });
@@ -29,6 +30,7 @@ function Login() {
   const [open, setOpen] = React.useState(false);
 
   const [user, setUser] = useState("");
+  const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({ message: null, credentials: false });
 
@@ -46,17 +48,17 @@ function Login() {
 
   const onSubmit = async () => {
     try {
-      if (!user || !password) {
+      if (!user || !password || !mail) {
         setError({ ...error, credentials: true });
         return;
       }
-      const response = await axios.post("http://localhost:3001/login", {
+      const response = await axios.post("http://localhost:3001/register", {
         username: user,
         password,
-        email: user,
+        email: mail,
       });
       dispatch(setAccessToken(response.data));
-      navigate("/");
+      navigate("/login");
       setError({ ...error, message: null });
     } catch (error) {
       setError({ ...error, message: error.response.data.error });
@@ -71,25 +73,34 @@ function Login() {
     setOpen(false);
   };
 
-  const handleSignUp = () => {
-    navigate("/signup");
-  };
-
   return (
     <>
-      <div className="w-full h-3/4 flex justify-center">
-        <img src="LoginImg.png" alt="Login-Image" className="w-auto h-full" />
+      <div className="w-full mt-10 flex justify-center">
+        <Link to={"/login"}>
+          <ThreadsLogo />
+        </Link>
       </div>
-      <div className="h-1/4">
+      <div className="w-full">
         <div className="p-1 rounded-md border-[1px] border-[#454545]">
           <div className="py-1">
             <TextField
               id="outlined-basic"
-              label="Username or Mail"
+              label="Username"
               variant="outlined"
               fullWidth
               size="small"
               onChange={(event) => setUser(event.target.value)}
+              error={error.credentials}
+            />
+          </div>
+          <div className="py-1">
+            <TextField
+              id="outlined-basic"
+              label="Mail"
+              variant="outlined"
+              fullWidth
+              size="small"
+              onChange={(event) => setMail(event.target.value)}
               error={error.credentials}
             />
           </div>
@@ -126,9 +137,10 @@ function Login() {
               />
             </FormControl>
           </div>
-          <div className="flex justify-center py-1">
-            <Button variant="outlined" onClick={onSubmit} fullWidth>
-              Login
+          <div className="flex justify-center py-1"></div>
+          <div className="flex justify-center">
+            <Button variant="outlined" fullWidth onClick={onSubmit}>
+              Sign Up
             </Button>
             {error.message !== null ? (
               <Snackbar
@@ -162,18 +174,10 @@ function Login() {
               </Snackbar>
             )}
           </div>
-          <div className="flex justify-center">
-            <span className="text-white">or</span>
-          </div>
-          <div className="flex justify-center">
-            <Button variant="outlined" fullWidth onClick={handleSignUp}>
-              Sign Up
-            </Button>
-          </div>
         </div>
       </div>
     </>
   );
 }
 
-export default Login;
+export default Signup;

@@ -3,17 +3,16 @@
 @tailwind utilities;
 
 @font-face {
-   font-family: 'InstagramSans-Regular';
-   src: url('./fonts/InstagramSans-Regular.ttf') format('truetype');
+  font-family: "InstagramSans-Regular";
+  src: url("./fonts/InstagramSans-Regular.ttf") format("truetype");
 }
 
-body{
-     background-color: #0d0d0d;
-     width: 100vw;
-     height: 100vh;
-     display: flex;
-    justify-content: center;
-    overflow-y: hidden;
-    font-family: 'InstagramSans-Regular', sans-serif;
+body {
+  background-color: #0d0d0d;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden;
+  font-family: "InstagramSans-Regular", sans-serif;
 }
-

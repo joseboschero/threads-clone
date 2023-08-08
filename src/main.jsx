@@ -6,6 +6,8 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { createTheme, ThemeProvider, withTheme } from "@mui/material/styles";
+import Login from "./components/Login/Login";
+import { BrowserRouter } from "react-router-dom";
 
 const Theme = createTheme({
   palette: {
@@ -23,7 +25,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <PersistGate persistor={persistor}>
       <ThemeProvider theme={Theme}>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </ThemeProvider>
     </PersistGate>
   </Provider>

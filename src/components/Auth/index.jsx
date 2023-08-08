@@ -7,16 +7,39 @@ import axiosInstance from "../../utils/axiosInstance";
 const AuthRouter = () => {
   const { accessToken, currentUser } = useSelector((state) => state.auth);
   const location = useLocation();
+  const dispatch = useDispatch();
 
-  useEffect(() => {
+  const [validation, setValidation] = useState(false);
+
+  console.log(accessToken.token);
+
+  async function resolveToken() {
     if (accessToken) {
       try {
-        axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
-
-        // const user =  get user data
-      } catch (error) {}
+        axiosInstance.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${accessToken.token}`;
+        const user = await axiosInstance.get("/test");
+        dispatch(setCurrentUser(user.data));
+        setValidation(true);
+      } catch (error) {
+        setValidation(false);
+        dispatch(clearAccessToken());
+      }
     }
-  }, []);
+  }
+
+  useEffect(() => {
+    resolveToken();
+  }, [accessToken, location.pathname, dispatch]);
+
+  if (validation) {
+    return <Outlet />;
+  } else if (accessToken) {
+    return <></>;
+  } else {
+    return <Navigate to={"/login"} />;
+  }
 };
 
 export default AuthRouter;
