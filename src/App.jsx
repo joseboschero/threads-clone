@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, Router, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
 import Home from "./components/Home/Home";
@@ -8,13 +8,15 @@ import AuthRouter from "./components/Auth";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route element={<AuthRouter />}>
-        <Route path="/" element={<Home />} />
-      </Route>
-    </Routes>
+    <div className="max-w-xs md:max-w-2xl p-5  h-auto border-x-[1px] border-neutral-100/10">
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route element={<AuthRouter />}>
+          <Route path="/" element={<Home />} />
+        </Route>
+      </Routes>
+    </div>
   );
 }
 

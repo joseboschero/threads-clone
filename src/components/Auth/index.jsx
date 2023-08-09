@@ -11,14 +11,10 @@ const AuthRouter = () => {
 
   const [validation, setValidation] = useState(false);
 
-  console.log(accessToken.token);
-
   async function resolveToken() {
     if (accessToken) {
       try {
-        axiosInstance.defaults.headers.common[
-          "Authorization"
-        ] = `Bearer ${accessToken.token}`;
+        axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${accessToken.token}`;
         const user = await axiosInstance.get("/test");
         dispatch(setCurrentUser(user.data));
         setValidation(true);

@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 import auth from "./slices/auth";
+import threads from "./slices/threads";
 
 const createNoopStorage = () => {
   return {
@@ -28,6 +29,7 @@ const persistAuthConfig = {
 const store = configureStore({
   reducer: {
     auth: persistReducer(persistAuthConfig, auth),
+    threads,
   },
   middleware: (defaultMiddleware) =>
     defaultMiddleware({
