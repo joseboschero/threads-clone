@@ -14,7 +14,7 @@ function Home() {
   }, [dispatch]);
 
   return (
-    <div className="w-full">
+    <div className="px-3 w-full">
       <div className="flex items-center justify-center">
         <Link to={"/"}>
           <ThreadsLogo />

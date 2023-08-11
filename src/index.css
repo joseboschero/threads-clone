@@ -20,7 +20,7 @@ body {
 }
 
 .img {
-  filter: hue-rotate(360deg); 
+  filter: hue-rotate(360deg);
 }
 
 body {
@@ -29,7 +29,7 @@ body {
 
 body::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
-  background-color: #2b2b2b
+  background-color: #2b2b2b;
 }
 
 body::-webkit-scrollbar {
@@ -38,4 +38,8 @@ body::-webkit-scrollbar {
 
 body::-webkit-scrollbar-thumb {
   background-color: #444040;
+}
+
+.asd {
+  width: inherit;
 }
