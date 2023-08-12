@@ -1,27 +1,26 @@
-import React from "react";
-import { Provider } from "react-redux";
-import store, { persistor } from "../src/redux/store";
-import { PersistGate } from "redux-persist/lib/integration/react";
-import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
-import "./index.css";
-import { createTheme, ThemeProvider, withTheme } from "@mui/material/styles";
-import Login from "./components/Login/Login";
-import { BrowserRouter } from "react-router-dom";
+import React from 'react';
+import { Provider } from 'react-redux';
+import store, { persistor } from '../src/redux/store';
+import { PersistGate } from 'redux-persist/lib/integration/react';
+import ReactDOM from 'react-dom/client';
+import App from './App.jsx';
+import './index.css';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { BrowserRouter } from 'react-router-dom';
 
 const Theme = createTheme({
   palette: {
-    mode: "dark",
+    mode: 'dark',
     primary: {
-      main: "#ffffff",
+      main: '#ffffff',
     },
     secondary: {
-      main: "#66bb6a",
+      main: '#66bb6a',
     },
   },
 });
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <PersistGate persistor={persistor}>
       <ThemeProvider theme={Theme}>
@@ -30,5 +29,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         </BrowserRouter>
       </ThemeProvider>
     </PersistGate>
-  </Provider>
+  </Provider>,
 );

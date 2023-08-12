@@ -1,5 +1,5 @@
-import "./ThreadsLogo.css";
-import React from "react";
+import './ThreadsLogo.css';
+import React from 'react';
 
 function ThreadsLogo() {
   return (
