@@ -9,7 +9,12 @@ export default function ProfileAvatar({ src, size = 'normal' }) {
 
   return (
     <div className="flex flex-col justify-between">
-      <Avatar alt="user avatar" src={`${import.meta.env.VITE_IMAGES}${src}`} sx={sizes[size]} />
+      <Avatar
+        className="cursor-pointer"
+        alt="user avatar"
+        src={`${import.meta.env.VITE_IMAGES}${src}`}
+        sx={sizes[size]}
+      />
       <div className="flex min-h-full justify-center pt-2">
         <div className="bg-slate-600 w-[2px] h-[calc(100%_-_45px)] rounded-md"></div>
       </div>
