@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
-import ThreadsLogo from "../ThreadsLogo/ThreadsLogo";
-import { Link } from "react-router-dom";
-import Thread from "../Thread";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllThreads } from "../../redux/slices/threads";
+import React, { useEffect } from 'react';
+import ThreadsLogo from '../ThreadsLogo/ThreadsLogo';
+import { Link } from 'react-router-dom';
+import Thread from '../Thread';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllThreads } from '../../redux/slices/threads';
+import Form from '../Thread/Form';
 
 function Home() {
   const dispatch = useDispatch();
@@ -16,13 +17,14 @@ function Home() {
   return (
     <div className="px-3 w-full">
       <div className="flex items-center justify-center">
-        <Link to={"/"}>
+        <Link to={'/'}>
           <ThreadsLogo />
         </Link>
       </div>
-      {threads.map((thread) => (
-        <Thread data={thread} />
+      {threads.map((thread, index) => (
+        <Thread key={index} data={thread} />
       ))}
+      <Form />
     </div>
   );
 }

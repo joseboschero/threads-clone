@@ -1,11 +1,11 @@
-import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import Login from "./components/Login/Login";
-import Signup from "./components/Signup/Signup";
-import Home from "./components/Home/Home";
-import React from "react";
-import AuthRouter from "./components/Auth";
-import FixedBottomNavigation from "./components/BottomBar/BottomBar";
+import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import Login from './components/Login/Login';
+import Signup from './components/Signup/Signup';
+import Home from './components/Home/Home';
+import React from 'react';
+import AuthRouter from './components/Auth';
+import FixedBottomNavigation from './components/BottomBar/BottomBar';
 
 function App() {
   return (
