@@ -24,7 +24,6 @@ function Home() {
       {threads.map((thread, index) => (
         <Thread key={index} data={thread} />
       ))}
-      <Form />
     </div>
   );
 }
